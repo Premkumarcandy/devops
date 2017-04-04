@@ -4,8 +4,8 @@
 
 | Number | Description | Link |
 | --- | --- | --- |
-||||
-| 03 | Dev/Test | [20532/Lab2](https://microsoftlearning.github.io/20532-DevelopingMicrosoftAzureSolutions/Labs/dotnet/key_02.html) |
+| 01 | CLI 2.0 | [edX/CLI](/labs/vm_cli.md) |
+| 02 | Dev/Test | [20532/Lab2](https://microsoftlearning.github.io/20532-DevelopingMicrosoftAzureSolutions/Labs/dotnet/key_02.html) |
 
 ## ARM Templates
 
