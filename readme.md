@@ -13,3 +13,4 @@
 | 02 | VM with DSC Configuration | [azure-quickstart-templates/dsc-extension-iis-server-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-iis-server-windows-vm) |
 | 03 | Load Balanced VM | [azure-quickstart-templates/201-2-vms-loadbalancer-lbrules](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) |
 | 04 | VM Scale Set | [azure-quickstart-templates/201-vmss-windows-webapp-dsc-autoscale](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) |
+| 05 | Web App + SQL Database | [azure-quickstart-templates/201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)
