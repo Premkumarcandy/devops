@@ -213,6 +213,7 @@
         <pre class="prettyprint sh"><code>az vm image list --location "West US" --publisher "MicrosoftWindowsServer" --offer "WindowsServer" --sku "2016-Datacenter" --all</code></pre>
         <p><strong>Note:</strong> In the future, you can use these set of commands to look up the Image URNs for many different operating systems available for Azure Virtual Machines.</p>
     </li>
+    </ol>
 <h3 id="create-a-virtual-machine-from-image">Create A Virtual Machine from Image</h3>
 <ol style="list-style-type: decimal">
     <li><p>Use the following command to list all possible CLI options for <strong>Virtual Machine</strong>:</p>
