@@ -295,4 +295,3 @@
   	</li>
     <li><p>Close the command line interface application.</p></li>
 </ol>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
