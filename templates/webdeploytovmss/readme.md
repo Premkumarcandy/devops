@@ -4,6 +4,8 @@ The template above can deploy a WebDeploy package to a VMSS instance. It is used
 
 ## Build
 
+Use the standard ASP.NET Build Template with the following **MSBuild** arguments: ``/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:PackageLocation="$(build.artifactstagingdirectory)\\"``
+
 ## Release Template
 
 Example here: [release.json](release.json)
