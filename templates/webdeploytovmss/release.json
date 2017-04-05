@@ -1,0 +1,211 @@
+{
+    "source": 2,
+    "id": 1,
+    "revision": 11,
+    "name": "WebDeploy to VMSS",
+    "createdBy": {
+        "id": "4fec780d-81e9-4cb6-8048-e69ffcf60576",
+        "displayName": "Sidney Andrews",
+        "uniqueName": "sidney@seesharprun.net",
+        "url": "https://app.vssps.visualstudio.com/A589523ef-5a67-472c-8fdf-85e2e6fce514/_apis/Identities/4fec780d-81e9-4cb6-8048-e69ffcf60576",
+        "imageUrl": "https://seesharprun.visualstudio.com/_api/_common/identityImage?id=4fec780d-81e9-4cb6-8048-e69ffcf60576"
+    },
+    "createdOn": "2017-04-05T03:47:49.890Z",
+    "modifiedBy": {
+        "id": "4fec780d-81e9-4cb6-8048-e69ffcf60576",
+        "displayName": "Sidney Andrews",
+        "uniqueName": "sidney@seesharprun.net",
+        "url": "https://app.vssps.visualstudio.com/A589523ef-5a67-472c-8fdf-85e2e6fce514/_apis/Identities/4fec780d-81e9-4cb6-8048-e69ffcf60576",
+        "imageUrl": "https://seesharprun.visualstudio.com/_api/_common/identityImage?id=4fec780d-81e9-4cb6-8048-e69ffcf60576"
+    },
+    "modifiedOn": "2017-04-05T05:15:25.057Z",
+    "lastRelease": null,
+    "path": "\\",
+    "variables": {
+        "WebDeployPackageUri": {
+            "value": ""
+        },
+        "WebDeployPackageToken": {
+            "value": ""
+        }
+    },
+    "variableGroups": [],
+    "environments": [{
+        "id": 1,
+        "name": "Public Cloud",
+        "rank": 1,
+        "owner": {
+            "id": "4fec780d-81e9-4cb6-8048-e69ffcf60576",
+            "displayName": "Sidney Andrews",
+            "uniqueName": "sidney@seesharprun.net",
+            "url": "https://app.vssps.visualstudio.com/A589523ef-5a67-472c-8fdf-85e2e6fce514/_apis/Identities/4fec780d-81e9-4cb6-8048-e69ffcf60576",
+            "imageUrl": "https://seesharprun.visualstudio.com/_api/_common/identityImage?id=4fec780d-81e9-4cb6-8048-e69ffcf60576"
+        },
+        "variables": {},
+        "preDeployApprovals": {
+            "approvals": [{
+                "rank": 1,
+                "isAutomated": true,
+                "isNotificationOn": false,
+                "id": 1
+            }]
+        },
+        "deployStep": {
+            "tasks": [],
+            "id": 2
+        },
+        "postDeployApprovals": {
+            "approvals": [{
+                "rank": 1,
+                "isAutomated": true,
+                "isNotificationOn": false,
+                "id": 3
+            }]
+        },
+        "deployPhases": [{
+            "deploymentInput": {
+                "parallelExecution": {
+                    "parallelExecutionType": "none"
+                },
+                "skipArtifactsDownload": false,
+                "timeoutInMinutes": 0,
+                "queueId": 18,
+                "demands": [],
+                "enableAccessToken": false
+            },
+            "rank": 1,
+            "phaseType": 1,
+            "name": "Run on agent",
+            "workflowTasks": [{
+                "taskId": "eb72cb01-a7e5-427b-a8a1-1b31ccac8a43",
+                "version": "1.*",
+                "name": "AzureBlob File Copy",
+                "enabled": true,
+                "alwaysRun": false,
+                "continueOnError": false,
+                "timeoutInMinutes": 0,
+                "definitionType": "task",
+                "inputs": {
+                    "SourcePath": "$(System.DefaultWorkingDirectory)/AutoBuildandPackage/drop/Basic.Web.zip",
+                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
+                    "ConnectedServiceName": "",
+                    "ConnectedServiceNameARM": "9c2a17db-0194-45b6-b0e9-6ac4815103c4",
+                    "Destination": "AzureBlob",
+                    "StorageAccount": "",
+                    "StorageAccountRM": "vmssstorassets",
+                    "ContainerName": "assets",
+                    "BlobPrefix": "$(Build.BuildNumber)",
+                    "EnvironmentName": "",
+                    "EnvironmentNameRM": "",
+                    "ResourceFilteringMethod": "machineNames",
+                    "MachineNames": "",
+                    "vmsAdminUserName": "",
+                    "vmsAdminPassword": "",
+                    "TargetPath": "",
+                    "AdditionalArguments": "",
+                    "enableCopyPrerequisites": "false",
+                    "CopyFilesInParallel": "true",
+                    "CleanTargetBeforeCopy": "false",
+                    "skipCACheck": "true",
+                    "outputStorageUri": "WebDeployPackageUri",
+                    "outputStorageContainerSasToken": "WebDeployPackageToken"
+                }
+            }, {
+                "taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
+                "version": "2.*",
+                "name": "Azure Deployment:Create Or Update Resource Group action on ASPNETtoVMSS",
+                "enabled": true,
+                "alwaysRun": false,
+                "continueOnError": false,
+                "timeoutInMinutes": 0,
+                "definitionType": "task",
+                "inputs": {
+                    "ConnectedServiceName": "9c2a17db-0194-45b6-b0e9-6ac4815103c4",
+                    "action": "Create Or Update Resource Group",
+                    "resourceGroupName": "ASPNETtoVMSS",
+                    "location": "East US",
+                    "templateLocation": "URL of the file",
+                    "csmFileLink": "https://raw.githubusercontent.com/azure-bootcamps/devops/master/templates/webdeploytovmss/azuredeploy.json",
+                    "csmParametersFileLink": "https://raw.githubusercontent.com/azure-bootcamps/devops/master/templates/webdeploytovmss/azuredeploy.parameters.json",
+                    "csmFile": "",
+                    "csmParametersFile": "",
+                    "overrideParameters": "-vmssName sandrewsunique -instanceCount 3 -powershelldscZip https://github.com/azure-bootcamps/devops/raw/master/templates/webdeploytovmss/IISInstall.ps1.zip -webDeployPackage $(WebDeployPackageUri)/$(Build.BuildNumber)/Basic.Web.zip$(WebDeployPackageToken) -powershelldscUpdateTagVersion $(Build.BuildNumber)",
+                    "deploymentMode": "Incremental",
+                    "enableDeploymentPrerequisites": "None",
+                    "machineGroupName": "",
+                    "copyAzureVMTags": "true",
+                    "vstsPATToken": "",
+                    "outputVariable": ""
+                }
+            }]
+        }],
+        "environmentOptions": {
+            "emailNotificationType": "OnlyOnFailure",
+            "emailRecipients": "release.environment.owner;release.creator",
+            "skipArtifactsDownload": false,
+            "timeoutInMinutes": 0,
+            "enableAccessToken": false
+        },
+        "demands": [],
+        "conditions": [{
+            "name": "ReleaseStarted",
+            "conditionType": 1,
+            "value": ""
+        }],
+        "executionPolicy": {
+            "concurrencyCount": 0,
+            "queueDepthCount": 0
+        },
+        "schedules": [],
+        "retentionPolicy": {
+            "daysToKeep": 30,
+            "releasesToKeep": 3,
+            "retainBuild": true
+        }
+    }],
+    "artifacts": [{
+        "sourceId": "b50891d2-38fa-4772-af11-03d59a500904:3",
+        "type": "Build",
+        "alias": "AutoBuildandPackage",
+        "definitionReference": {
+            "artifactSourceDefinitionUrl": {
+                "id": "https://seesharprun.visualstudio.com/_permalink/_build/index?collectionId=8abd1235-f3d3-4ce7-950d-88f9e73ae1b1&projectId=b50891d2-38fa-4772-af11-03d59a500904&definitionId=3",
+                "name": ""
+            },
+            "defaultVersionType": {
+                "id": "latestType",
+                "name": "Latest"
+            },
+            "definition": {
+                "id": "3",
+                "name": "AutoBuildandPackage"
+            },
+            "project": {
+                "id": "b50891d2-38fa-4772-af11-03d59a500904",
+                "name": "ASPNETtoVMSS"
+            }
+        },
+        "isPrimary": true
+    }],
+    "triggers": [{
+        "artifactAlias": "AutoBuildandPackage",
+        "triggerConditions": [{
+            "sourceBranch": "master",
+            "tags": []
+        }],
+        "triggerType": 1
+    }],
+    "releaseNameFormat": "Release-$(rev:r)",
+    "retentionPolicy": null,
+    "url": "https://seesharprun.vsrm.visualstudio.com/b50891d2-38fa-4772-af11-03d59a500904/_apis/Release/definitions/1",
+    "_links": {
+        "self": {
+            "href": "https://seesharprun.vsrm.visualstudio.com/b50891d2-38fa-4772-af11-03d59a500904/_apis/Release/definitions/1"
+        },
+        "web": {
+            "href": "https://seesharprun.visualstudio.com/b50891d2-38fa-4772-af11-03d59a500904/_apps/hub/ms.vss-releaseManagement-web.hub-explorer?definitionId=1"
+        }
+    },
+    "tags": [],
+    "properties": {}
+}
