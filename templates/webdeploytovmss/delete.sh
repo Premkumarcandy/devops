@@ -1,0 +1,1 @@
+az storage blob delete --connection-string (az storage account show-connection-string -n vmssstorassets -g ASPNETtoVMSS --query connectionString) --container-name dynamic-deployment --name 20170405.2/Basic.Web.zip
