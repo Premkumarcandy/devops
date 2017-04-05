@@ -2,6 +2,14 @@
 
 The template above can deploy a WebDeploy package to a VMSS instance. It is used as part of a VSTS workflow.
 
+## Build
+
+## Release Template
+
+Example here: [release.json](release.json)
+
+## Enhancements
+
 You can enhance the workflow by doing the following:
 
 - Delete artifacts after the build process using The Azure CLI 2.0: ``az storage blob delete --connection-string (az storage account show-connection-string -n vmssstorassets -g ASPNETtoVMSS --query connectionString) --container-name dynamic-deployment --name 20170405.2/Basic.Web.zip``.
